@@ -3,16 +3,6 @@ from django.contrib import admin
 from .models import Flat, Complaint, Owner
 
 
-# class PropertyOwnerFlats(models.Model):
-#     owner = models.ForeignKey(PropertyOwner, models.DO_NOTHING)
-#     flat = models.ForeignKey(PropertyFlat, models.DO_NOTHING)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'property_owner_flats'
-#         unique_together = (('owner', 'flat'),)
-
-
 class OwnerFlatInline(admin.TabularInline):
     model = Owner.flats.through
     raw_id_fields = ('owner',)
