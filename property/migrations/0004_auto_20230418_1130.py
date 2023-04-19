@@ -6,13 +6,6 @@ from django.db import migrations
 PIVOTAL_YEAR = 2015
 
 
-# def fill_new_building_with_construction_year(apps, schema_editor):
-#     Flat = apps.get_model('property', 'Flat')
-#     for flat in Flat.objects.all():
-#         if flat.construction_year is not None:
-#             flat.new_building = (flat.construction_year >= PIVOTAL_YEAR)
-#             flat.save()
-
 def fill_new_building_with_construction_year(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Flat.objects.filter(construction_year__gte=PIVOTAL_YEAR).update(new_building=True)
