@@ -67,7 +67,7 @@ class Complaint(models.Model):
     text = models.TextField('Текст жалобы')
 
     def __str__(self):
-        return str(self.flat)
+        return f'{self.flat.town}, {self.flat.address}: "{self.text[:20]}..."'
 
 
 class Owner(models.Model):
