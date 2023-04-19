@@ -9,7 +9,7 @@ COUNTRY_CODE = 'RU'
 
 def normalize_phonenumber(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.iterator():
         owner_pure_phone = phonenumbers.parse(flat.owners_phonenumber, COUNTRY_CODE)
         if phonenumbers.is_valid_number(owner_pure_phone):
             flat.owner_pure_phone = owner_pure_phone
